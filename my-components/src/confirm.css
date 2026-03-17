@@ -1,0 +1,24 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+}
+.App-header {
+  width: 500px;
+  height: auto;
+  border: 1px solid grey;
+  padding: 10px;
+}
+.confirm-wrapper {
+  margin-top: 25px;
+  display: flex;
+}
+.confirm-title-container span {
+  font=size: 40px;
+}
+.confirm-button-container {
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 5px;
+}

@@ -1,0 +1,14 @@
+.light-theme {
+  --bg: #ffffff;
+  --text: #000000;
+}
+
+.dark-theme {
+  --bg: #000000;
+  --text: #ffffff;
+}
+
+div {
+  background: var(--bg);
+  color: var(--text);
+}

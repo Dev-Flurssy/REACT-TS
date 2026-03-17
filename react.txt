@@ -1,0 +1,137 @@
+React is a library that returns a ui component
+Dom is a structural representation aka tree of a web page that allows modification access and
+control of a web page and its structure using Javascript. 
+Tree Document Root Html Branches body head and leaves(attributes & tags) aka nodes
+
+React creates an in memory copy of the actual dom  virtual representaion of the dom as a 
+tree of objects when updated creates new virtual dom & compares with the old virtual using 
+diffing algorithm and if different applies it to the virtual dom it only update the real dom 
+when neccesary by applying minimised and optimised instruction based on users interaction
+Reconcilation is a process of comparing old VD with new VD
+
+Diffing Algorithm ensures element of different types produce different trees and static
+types dont need to be checked. it checks the root for changes and scrap the old one but when
+the the attributes of same element is changed it compares and updates nodes leaving the tree
+
+Jsx Javascript syntax is a powerful synatax that allows us to write and manage UI components
+easily allowing html elements inside Javascript.
+
+ReactDOM is a core react package that provides dom specific methods to manipulate and interact
+with dom enabling efficient management and rendering of the DOM.
+redering Components displays react component to the dom
+Dom manipulation allows efficient dom updates
+server-server side rendering support both client and server side rendering
+React & Dom Bridge connect react with the browsers dom
+
+Render is a fundamental part of class component used to display component of ui returned as
+html or jsx it takes two argument html code and html element.
+
+ReactJS portal comes up with a way to render children into a DOM node that occurs outside the
+DOM Hierachy eg ReactDOM.createPortal(child, container) 
+
+React Element are the smallest building block of a react application, aka basic Javascript 
+describing the ui.
+li using map( (value, index) => {})
+
+Props means properties it is used to pass information from one component to another that is
+parents to children. they cannot be modified they are read only and can be updated when
+when parent elements are updated.
+
+State is a built in object that is used to store and manage data that changes over time in a 
+component allowing react to react dynamically to changes from user or app events.
+it is mutable and can be set with useState or setState hook, it is re rendered when state
+changes
+
+One way data binding means data flows from a single direction from parents to child via props
+meaning from ts or Js to html
+
+Components are resuable UI units that handle their own logic accept data through props manage
+state and update only parts of the UI that changes
+
+functional Components are basic building blocks used to create & manage user, interface 
+elements. They are simple Javascript that returns Jsx.
+when they recieve data from props they process and create a virtual dom that represent the 
+current state compares and render them if the state is different. eg const App: React.FC<>=({})
+Class Components are Es6 Class that extends react component, they allow state management and
+lifecycle methods for managing complex ui logic. used for stateful component before Hooks.
+structure
+ Declaration is defined as a class that extends react component eg
+ class App extends React.Components{constructor...} 
+ Constructor is used to initialise component intial state bind event handlers eg
+ constructor(props{}){super(props); this.state={count(0)}}
+  this.state is used to manage internal state that can be changed over time eg user input
+ render method its the only required method in Class component which returns jsx whenever
+ the state is changed the render is re invoked eg
+ render(){return <>bla {this.state.count}</>}
+ event handlers are used to handle user interactions and use this.setState to update component
+ props are accessible via this.state
+
+Hooks is a way to add functionality to functional component in react enabling functional 
+component to use state lifecylce without depending on class component.
+state is a way of tracking dynamic values that changes over time each component has its own 
+state independent of other component and it shouldnt be mutable but function can be used to 
+update it. 
+types of Hooks
+State hooks: useState useReducer enable hooks to manage component in a clean and modular way
+
+useState() is a function that allows us to add state to a functional component an alternative
+to useReducer() eg const [state, setState] = useState(initialState)
+it remembers the state before each rerenders amd compares it. when updating based on previous
+values set to a function eg setCount(prevCount => {prevCount + 1}) we use it when need a 
+simple management solution, state that changes over time, simple updates and dependcies. 
+
+useReducer() is a state hook preffered when we have a complex logic eg
+const [state, dispatch] = useReducer(reducer, initialState)
+reducer defines how the state should be updated based on the value taking two values
+ the current state and the action.
+state the current state returned from the useReducer hook
+dispatch a function used to send action to the reducer to update the state
+
+React Context Api allows data to be shared across components without passing it through 
+successive levels. eg create the api: const myContext = React.createContext()
+using the contextprovider created: <myContext.Provider value={name:"Bisi", age:20}>
+import and consume it: const child = useContext(myContext); <div>Name:{child.name}</div> etc.
+
+useContext() allows react to consume values from React Context values ideal for managing
+themes authentication and user preference. it prevents prop drilling
+Prop drillling is when data is passed from parent to children and other nested elements that 
+do not need it till it gets to the element that needs it
+
+useEffect() is a react hook used to handle side effects in functional component eg fetching
+data from an api, setting up event listeners, cleaning up a resource when it unmounts eg
+useEffect(() => {code to run}
+return() =>{clean up function(optional)}, [dependcies])
+dependcies array if none runs after every render, 
+[] if empty run once on mount and mimicks componentDidMount
+[values, values]runs if there is a change in values mimicks  componentDidUpdate
+return() inside the useEffect to clean up and mimick componentWillUnmount
+
+useLayoutEffect() works like useEffect but rather works synchronously after the dom is done
+loading meaning the web waits for it to compile before ui shows unlike useEffect which ui shows
+before the effect is run we use it to adjust animation measure dom elements width & height
+
+
+render is responsible for showing the logic or the ui to be presented on a web page it returns
+null or jsx and the logic is wriiten inside it aka lifecylce method
+
+React.FC a react functional component and treat whatever is attached to it as a component
+that can be <todoContext><todoContextr/>
+children is a special prop that represent whatever is wrapped inside the component
+ReactNode is a type that covers anything react can render
+CreateContext  gives an object with two parts
+provider it provides values to children we dont export it directly but wrap it in our
+own <TodoProvider> defining our logic inside it<TodoProvider/>
+consumer it consume the children provider
+
+lifecycle methods are special functions in a react class components that run at different 
+stages in a components existence.
+stages
+Mounting when components is created and inserted into DOM eg Adding event listeners, entering url
+constructor() set up initial states and bindings
+componentDidMount() runs after component is mounted good for data fetching etc
+updating when props or states change or is rerendered eg 
+shouldComponentUpdate() allows rerendering of data or state
+componentDidUpdate() runs after update allowing reaction to changes ,ade
+unmounting when component is removed from the dom eg
+componentWillUnmount() cleanup work (like removing event listeners or canceling timers).
+
