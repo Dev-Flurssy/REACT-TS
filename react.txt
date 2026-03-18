@@ -2,6 +2,8 @@ React is a library that returns a ui component
 Dom is a structural representation aka tree of a web page that allows modification access and
 control of a web page and its structure using Javascript. 
 Tree Document Root Html Branches body head and leaves(attributes & tags) aka nodes
+lifecycle of a component is series of method that is invoked in different stages of the 
+component existence
 
 React creates an in memory copy of the actual dom  virtual representaion of the dom as a 
 tree of objects when updated creates new virtual dom & compares with the old virtual using 
@@ -31,7 +33,12 @@ DOM Hierachy eg ReactDOM.createPortal(child, container)
 
 React Element are the smallest building block of a react application, aka basic Javascript 
 describing the ui.
-li using map( (value, index) => {})
+li using map((value, index) => ())  is for static array or object that dont change
+while map((value) => (key={value.id})) is used to track item regardless of changes
+Key is a unique Identifier in react that helps to track an updated item in a list
+
+presentational Components focus on how data is displayed on the screen
+Container Components  focus on what data is to be shown to the user
 
 Props means properties it is used to pass information from one component to another that is
 parents to children. they cannot be modified they are read only and can be updated when
@@ -42,6 +49,7 @@ component allowing react to react dynamically to changes from user or app events
 it is mutable and can be set with useState or setState hook, it is re rendered when state
 changes
 
+Data binding is a way of synchronousing data between model and view component
 One way data binding means data flows from a single direction from parents to child via props
 meaning from ts or Js to html
 
@@ -135,3 +143,18 @@ componentDidUpdate() runs after update allowing reaction to changes ,ade
 unmounting when component is removed from the dom eg
 componentWillUnmount() cleanup work (like removing event listeners or canceling timers).
 
+
+React Router is a javascript library designed to handle client-side routing allowing 
+users to navigate to different pages without refreshing the whole page.
+
+Types of routers
+BrowserRouter uses html5 history Api to manage routes 
+Hash Router is used with # rather than broswer Api
+Memory Router is used in non browser enviroment
+
+it uses routes and route component to declare route eg 
+ <Routes><Route path="/" element={<Home/>}></Route></Routes>
+ <nav>
+    <NavLink to="/" activeClassName="active">Home</NavLink>
+    <Link to="/about">About</Link>
+</nav>

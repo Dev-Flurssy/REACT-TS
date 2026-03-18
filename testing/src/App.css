@@ -1,14 +1,50 @@
-.light-theme {
-  --bg: #ffffff;
-  --text: #000000;
+/* General page styling */
+.page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
-.dark-theme {
-  --bg: #000000;
-  --text: #ffffff;
+/* Navbar styling */
+.navbar {
+  display: flex;
+  list-style: none;
+  background-color: #333;
+  padding: 10px;
 }
 
-div {
-  background: var(--bg);
-  color: var(--text);
+.navbar li {
+  margin-right: 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* Sub-navigation inside About */
+.subnav {
+  list-style: none;
+  padding: 0;
+}
+
+.subnav li {
+  margin: 5px 0;
+}
+
+/* Button styling */
+.btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
 }
