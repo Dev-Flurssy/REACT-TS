@@ -1,9 +1,9 @@
-import ShoppingCart from "./Exercises/ShoppingCart";
+import MiniCart from "./Exercises/MiniCart";
 
 const App = () => {
   return (
     <>
-      <ShoppingCart />
+      <MiniCart />
     </>
   );
 };

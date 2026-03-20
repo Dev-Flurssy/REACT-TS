@@ -1,5 +1,5 @@
 import type React from "react";
-import WithName from "./WithName";
+import WithName from "./withName";
 
 type IHello = {
   name?: string;

@@ -1,5 +1,5 @@
 import React from "react";
-import type { ICounter } from "./WithCounter";
+import type { ICounter } from "./withCounter";
 import "./Counter.css";
 
 const Counter: React.FC<ICounter> = ({

@@ -9,10 +9,18 @@ interface IState {
   total: number;
 }
 
-interface IAction {
+/**
+ * interface IAction {
   type: "ADD_ITEM" | "REMOVE_ITEM" | "APPLY_DISCOUNT" | "RESET_CART";
   payload?: any;
 }
+ */
+
+type IAction =
+  | { type: "ADD_ITEM"; payload: IItem }
+  | { type: "REMOVE_ITEM"; payload: number }
+  | { type: "APPLY_DISCOUNT"; payload: number }
+  | { type: "RESET_CART" };
 
 export const cartReducer = (state: IState, action: IAction): IState => {
   switch (action.type) {

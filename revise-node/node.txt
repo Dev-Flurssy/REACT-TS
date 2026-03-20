@@ -1,0 +1,3 @@
+NodeJS is an open source cross platform javascript run time built on Chrome v8 engine which
+enables developers to run javascript outside the browser to build fast scalable server side 
+applications
