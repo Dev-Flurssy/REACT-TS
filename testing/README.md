@@ -1,73 +1,120 @@
-# React + TypeScript + Vite
+# React and TypeScript Revision Journey
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repositary is a collection of exercises, notes, components built while revising React and TypeScript
+It focuses on Mastering the Usage of Components Types, Interface useEffect useReducer useState Form etc.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## Topics covered Includes 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### React Basics and fundamental
+- Functional components
+- JSX structure
+- Props and component composition
 
-## Expanding the ESLint configuration
+### State Management
+- `useState` for local component state
+- Controlled inputs (text, number)
+- Resetting and updating state
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Reducers
+- `useReducer` for centralized state logic
+- Writing reducer functions with `switch(action.type)`
+- Default case returning the current state
+- Using `...state` to preserve properties
+- Updating arrays with `[...state.items, newItem]`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### TypeScript Integration
+- Defining interfaces for state and actions
+- Discriminated union types for safe payloads
+- Optional chaining (`?.`) and nullish coalescing (`??`)
+- Strong typing for form inputs and reducer payloads
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Form Handling
+- Controlled inputs with `onChange`
+- Handling button clicks with `onClick`
+- Preventing default form submission with `e.preventDefault()`
+- Passing payloads from form state into reducer actions
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+
+## Example: Components
+
+### Counter with Reducer
+
+``` tsx
+import { useReducer, useState } from "react";
+interface IAction {
+  type: "Increment" | "Decrement" | "Multiply" | "Divide" | "Modulo" | "Reset";
+  payload?: number;
+}
+interface IState {
+  count: number;
+}
+const calculator = (state: IState, action: IAction): IState => {
+  switch (action.type) {
+    case "Increment":
+      return { count: state.count + (action.payload ?? 1) };
+    case "Decrement":
+      return { count: state.count - (action.payload ?? 1) };
+    case "Multiply":
+      return { count: state.count * (action.payload ?? 1) };
+    case "Divide":
+      return { count: state.count / (action.payload ?? 1) };
+    case "Modulo":
+      return { count: state.count % (action.payload ?? 1) };
+    case "Reset":
+      return { count: 0 };
+    default:
+      return state;
+  }
+};
+
+const Practice = () => {
+  const [state, dispatch] = useReducer(calculator, { count: 0 });
+  const [num, setNum] = useState(0);
+
+  return (
+    <div>
+      <h1>{state.count}</h1>
+      <input
+        type="number"
+        value={num}
+        onChange={(e) => setNum(Number(e.target.value))}
+        placeholder="Enter Number"
+      />
+      <button
+        onClick={() =>
+          dispatch({ type: "Increment", payload: num !== 0 ? num : undefined })
+        }
+      >
+        Increase
+      </button>
+      <button
+        onClick={() =>
+          dispatch({ type: "Decrement", payload: num !== 0 ? num : undefined })
+        }
+      >
+        Decrease
+      </button>
+      <button onClick={() => dispatch({ type: "Multiply", payload: num })}>
+        Increase
+      </button>
+      <button onClick={() => dispatch({ type: "Divide", payload: num })}>
+        Divide
+      </button>
+      <button onClick={() => dispatch({ type: "Modulo", payload: num })}>
+        Modulo
+      </button>
+      <button onClick={() => dispatch({ type: "Reset" })}>Restart</button>
+    </div>
+  );
+};
+
+export default Practice;
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
