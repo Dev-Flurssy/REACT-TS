@@ -153,8 +153,26 @@ Hash Router is used with # rather than broswer Api
 Memory Router is used in non browser enviroment
 
 it uses routes and route component to declare route eg 
- <Routes><Route path="/" element={<Home/>}></Route></Routes>
+ <BrowserRouter><Routes><Route path="/" element={<Home/>}></Route></Routes></BrowserRouter>
  <nav>
     <NavLink to="/" activeClassName="active">Home</NavLink>
     <Link to="/about">About</Link>
 </nav>
+ BrowserRouter is react most popular router ideal for web pages that requires clean seo 
+ friendly urls and rely on server side rendering 
+ csr browser recieves html which uses Javascript to dynamically render content on the
+ client side
+ssr the server generates fully rendered html pages and send to the browser
+
+Lazy Loading is a performance optimisation technique that loads only the required page 
+initially improving load speed additional component are laoded on user interaction or scrolling
+eg const Myc = Lazy(() => import("./myComponent")); <Suspense Fallback={}><Myc/></Suspense>
+
+Hoc Higher order Components are advanced techniques in react used for resuing logic. It is a
+function that takes a component and return a new advanced component.
+
+Code splitting is a supported feature like Web Pack which can create multiple bundles that can
+be dynamically loaded at run time.
+
+Error Boundaries are error component that help modules when they refuse to load to either 
+identify or give information about it.

@@ -1,27 +1,69 @@
-import { useReducer } from "react";
-
-const countReducer = (state: { count: number }, action: { type: string }) => {
+import { useReducer, useState } from "react";
+interface IAction {
+  type: "Increment" | "Decrement" | "Multiply" | "Divide" | "Modulo" | "Reset";
+  payload?: number;
+}
+interface IState {
+  count: number;
+}
+const calculator = (state: IState, action: IAction): IState => {
   switch (action.type) {
-    case "INCREMENT":
-      return { count: state.count + 1 };
-    case "DECREMENT":
-      return { count: state.count - 1 };
-    case "RESET":
+    case "Increment":
+      return { count: state.count + (action.payload ?? 1) };
+    case "Decrement":
+      return { count: state.count - (action.payload ?? 1) };
+    case "Multiply":
+      return { count: state.count * (action.payload ?? 1) };
+    case "Divide":
+      return { count: state.count / (action.payload ?? 1) };
+    case "Modulo":
+      return { count: state.count % (action.payload ?? 1) };
+    case "Reset":
       return { count: 0 };
     default:
       return state;
   }
 };
 
-function Counter() {
-  const [state, dispatch] = useReducer(countReducer, { count: 0 });
+const Practice = () => {
+  const [state, dispatch] = useReducer(calculator, { count: 0 });
+  const [num, setNum] = useState(0);
+
   return (
     <div>
-      <p>{state.count}</p>
-      <button onClick={() => dispatch({ type: "INCREMENT" })}>Increment</button>
-      <button onClick={() => dispatch({ type: "DECREMENT" })}>Decrement</button>
-      <button onClick={() => dispatch({ type: "RESET" })}>Reset</button>
+      <h1>{state.count}</h1>
+      <input
+        type="number"
+        value={num}
+        onChange={(e) => setNum(Number(e.target.value))}
+        placeholder="Enter Number"
+      />
+      <button
+        onClick={() =>
+          dispatch({ type: "Increment", payload: num !== 0 ? num : undefined })
+        }
+      >
+        Increase
+      </button>
+      <button
+        onClick={() =>
+          dispatch({ type: "Decrement", payload: num !== 0 ? num : undefined })
+        }
+      >
+        Decrease
+      </button>
+      <button onClick={() => dispatch({ type: "Multiply", payload: num })}>
+        Increase
+      </button>
+      <button onClick={() => dispatch({ type: "Divide", payload: num })}>
+        Divide
+      </button>
+      <button onClick={() => dispatch({ type: "Modulo", payload: num })}>
+        Modulo
+      </button>
+      <button onClick={() => dispatch({ type: "Reset" })}>Restart</button>
     </div>
   );
-}
-export default Counter;
+};
+
+export default Practice;
