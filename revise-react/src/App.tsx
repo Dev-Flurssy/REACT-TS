@@ -1,9 +1,17 @@
-import MiniCart from "./Exercises/MiniCart";
+import { Confirm } from "./new/confirm";
 
 const App = () => {
   return (
     <>
-      <MiniCart />
+      <Confirm
+        title="Dialog"
+        content="Welcome to our Mini Dialog Box"
+        open={true}
+        okCaption="OK"
+        cancelCaption="Cancel"
+        onConfirm={() => console.log("Confirmed")}
+        onCancel={() => console.log("Cancelled")}
+      />
     </>
   );
 };
