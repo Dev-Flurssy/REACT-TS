@@ -1,0 +1,71 @@
+body {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+.page-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: large;
+}
+
+.admin-dashboard {
+  display: flex;
+  gap: 2rem;
+}
+
+.admin-title {
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.admin-users-list,
+.admin-products-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.admin-users-list li,
+.admin-products-list li {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: background 0.4s ease;
+}
+.admin-users-list li a,
+.admin-products-list li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+.admin-users-list li:hover,
+.admin-products-list li:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+.admin-product-price {
+  color: #2a9d8f;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.admin-product-description {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.admin-user-is-admin,
+.admin-user-purchases {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}

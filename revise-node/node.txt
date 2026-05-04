@@ -5,6 +5,9 @@ applications.
 Rest Apis Allow communication between client and server over Http allowing exchange of data in
 json format using standard web protocols
 
+
+Http is a core internet protocol that define how data is exchanged between client and 
+servers on the web page
 Common Http Method
 Get Retrieves resources with 200 ok or 404 not found
 Post creates a new resources and on success returns 201

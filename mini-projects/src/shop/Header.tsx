@@ -40,7 +40,7 @@ const Header: React.FC<ISearch> = ({
           className={({ isActive }) =>
             isActive ? "header-link active-link" : "header-link "
           }
-          to="/"
+          to="/products"
         >
           Products
         </NavLink>
@@ -56,7 +56,7 @@ const Header: React.FC<ISearch> = ({
           className={({ isActive }) =>
             isActive ? "header-link active-link" : "header-link "
           }
-          to="/login"
+          to="/"
         >
           Login
         </NavLink>
